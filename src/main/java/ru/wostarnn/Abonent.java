@@ -40,7 +40,7 @@ public class Abonent {
             writer.write(String.format(Locale.US, "|     %s    | %s | %s | %s |%6.2f |\n", call.getType(), call.getStartInGivenFormat("yyyy-MM-dd HH:mm:ss"), call.getEndInGivenFormat("yyyy-MM-dd HH:mm:ss"), call.getDurationInGivenFormat("HH:mm:ss"), call.getCost()));
         }
         writer.write("----------------------------------------------------------------------------\n");
-        writer.write(String.format(Locale.US, "|                                           Total Cost: |%10.2f rubles |\n", totalRoubles));
+        writer.write(String.format(Locale.US, "|                                           Total Cost: |%9.2f roubles |\n", totalRoubles));
         writer.write("----------------------------------------------------------------------------\n");
         writer.close();
     }
