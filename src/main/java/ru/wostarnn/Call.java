@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class Call {
+public class Call implements Comparable<Call> {
     private final String type;
     private final LocalDateTime start;
     private final LocalDateTime end;
@@ -33,11 +33,19 @@ public class Call {
         return time.format(DateTimeFormatter.ofPattern(format));
     }
 
+    public LocalDateTime getStart() {
+        return start;
+    }
     public double getCost() {
         return cost;
     }
 
     public String getType() {
         return type;
+    }
+
+    @Override
+    public int compareTo(Call o) {
+        return getStart().compareTo(o.getStart());
     }
 }

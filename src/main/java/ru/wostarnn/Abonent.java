@@ -3,9 +3,7 @@ package ru.wostarnn;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 public class Abonent {
     private String phoneNumber;
@@ -29,6 +27,7 @@ public class Abonent {
         calls.add(call);
     }
     public void generateReport() throws IOException {
+        Collections.sort(calls);
         BufferedWriter writer = new BufferedWriter(new FileWriter("reports/" + phoneNumber + ".txt"));
         writer.write(String.format("Tariff index: %s\n", tariff));
         writer.write("----------------------------------------------------------------------------\n");
@@ -36,7 +35,7 @@ public class Abonent {
         writer.write("----------------------------------------------------------------------------\n");
         writer.write("| Call Type |   Start Time        |     End Time        | Duration | Cost  |\n");
         writer.write("----------------------------------------------------------------------------\n");
-        for (Call call : calls) {
+        for (Call call: calls) {
             writer.write(String.format(Locale.US, "|     %s    | %s | %s | %s |%6.2f |\n", call.getType(), call.getStartInGivenFormat("yyyy-MM-dd HH:mm:ss"), call.getEndInGivenFormat("yyyy-MM-dd HH:mm:ss"), call.getDurationInGivenFormat("HH:mm:ss"), call.getCost()));
         }
         writer.write("----------------------------------------------------------------------------\n");
